@@ -38,3 +38,19 @@ let classRoom = [
 ];
 
 // YOUR CODE BELOW
+function attendanceCheck(dayName){
+    let studentNames =[];
+    for(let student of classRoom){
+        let studentName = Object.keys(student)[0];          
+        let days = student[Object.keys(student)[0]];
+        for(let day of days){
+            if(day.hasOwnProperty(dayName)){
+                if(day[dayName] === true)
+                    studentNames.push(studentName);
+            }  
+        }
+    };
+    return studentNames;
+}
+
+

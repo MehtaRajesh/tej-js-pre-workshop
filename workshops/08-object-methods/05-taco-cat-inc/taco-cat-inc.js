@@ -23,3 +23,31 @@ let tacoCatInc = {
 };
 
 // YOUR CODE BELOW
+tacoCatInc.currentInventory = function(){
+  let currentInventoryValue = 0;
+  
+  for(let key in this){
+    if(typeof this[key] === 'object'){
+      for(let item in this[key]){ 
+        currentInventoryValue += (this[key][item]).cost * (this[key][item]).quantity;
+      }
+    }
+  }
+  return currentInventoryValue;
+}
+
+tacoCatInc.sale = function(order){
+  let totalSalesValue = 0;
+  for(let key in order){
+    let orderProduct = order[key];
+    if(this.hasOwnProperty(key)){
+      if(this[key].hasOwnProperty(orderProduct)){
+        let currentProduct = this[key][orderProduct];
+        currentProduct.quantity--;
+        totalSalesValue += currentProduct.cost * 1;
+        this.cash += currentProduct.cost * 1;
+      }
+    }   
+  }
+  return totalSalesValue;
+}

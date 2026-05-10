@@ -1,3 +1,4 @@
+
 let animalNoises = [
   { 'dog': {
     'America' : 'Woof! Woof!',
@@ -38,3 +39,15 @@ let animalNoises = [
 ];
 
 // YOUR CODE BELOW
+function petSounds(animal,country){
+  let completeSound = "";
+  for(let item of animalNoises){
+    if(item.hasOwnProperty(animal)){
+        if(item[animal].hasOwnProperty(country)){
+          completeSound = `${animal}s in ${country} say ${item[animal][country]}`;
+          return completeSound.charAt(0).toUpperCase() + completeSound.slice(1);
+        }
+    }
+  }
+  return completeSound;
+}
